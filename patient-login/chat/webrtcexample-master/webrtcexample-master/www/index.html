@@ -1,0 +1,60 @@
+
+<!--# include file="inc/header.html" -->
+
+    <title>WebRTC Erlang video chat example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WebRTC example. Using Erlang, Websockets and JavaScript to build a video chat">
+    <meta name="author" content="Andrey Sergienko">
+
+  </head>
+
+  <body>
+
+    <div class="container-narrow" itemscope itemtype="http://schema.org/Product">
+
+<!--# include virtual="inc/topmenu.html" -->
+
+      <div class="jumbotron" itemprop="description">
+        <h2>WebRTC + Erlang:<br>video web chat and 'chatroulette'</h2>
+        <p class="lead">This is an example of using WebRTC:<br>"video conference in a browser".<br><br>
+Supported browsers:<br>
+<img alt="Chrome browser logo" border="0" src="/img/chrome.png" /> Chrome (ver. >= 23)<br>
+<img alt="Firefox browser logo" border="0" src="/img/firefox.png" /> Firefox (ver. >= 22)
+<!--
+<img alt="Internet Explorer browser logo" border="0" src="/img/ie.png" /> Internet Explorer<br>
+(when <a href="https://developers.google.com/chrome/chrome-frame/">Chrome Frame</a> is installed
+-->
+</p>
+        <a class="btn btn-large btn-success" href="https://www.webrtcexample.com/1on1_new.html">1-on-1 conference!</a>
+        <a class="btn btn-large btn-success" href="https://www.webrtcexample.com/chat.html">1-on-1 old!</a>
+          <br /><br />
+          <a href="http://www.webrtcblueprints.com"><img src="/img/book.jpg" alt="WebRTC Blueprints"/></a>
+      </div>
+
+      <hr>
+
+      <div class="row-fluid marketing">
+        <div class="span6">
+          <h4>WebRTC</h4>
+          <p>Video and audio Real-Time Communication for browsers. Available in Chrome's stable version, Firefox's nightly version.</p>
+
+          <h4>JavaScript</h4>
+          <p>Handles API to WebRTC in a browser, manages websockets connection to server, does some browser side work.</p>
+
+          <h4>Bootstrap</h4>
+          <p>Nice and simple web frontend.</p>
+        </div>
+
+        <div class="span6">
+          <h4>Erlang</h4>
+          <p>Works on server. Handles browsers' registration, video rooms, WebRTC signaling, web chat, websockets transport.</p>
+
+          <h4>Cowboy</h4>
+          <p>Nice high-performance web server written in Erlang. Handles websockets connections and some HTTP requests.</p>
+
+          <h4>Websockets</h4>
+          <p>Transport for signaling messages between browsers and server. Transport for clients' chat messages.</p>
+        </div>
+      </div>
+
+<!--# include virtual="inc/footer.html" -->
