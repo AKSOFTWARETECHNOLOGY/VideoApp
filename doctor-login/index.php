@@ -1,3 +1,13 @@
+<?php session_start();
+ob_start();
+
+if(isset($_SESSION['doctoruserid']))
+{
+    header("Location: dashboard.php");
+}
+
+include "config.php";
+?>
 <!DOCTYPE html>
 <html lang="en" class="body-full-height">
     <head>        
@@ -22,35 +32,27 @@
                 <div class="login-logo-txt" style="font-size:48px;color:#fff;">VIDEO CHAT APP</div>
                 <div class="login-body">
                     <div class="login-title"><strong>Welcome User</strong>, Please login</div>
-                    <form action="index.html" class="form-horizontal" method="post">
+                    <form action="dologin.php" class="form-horizontal" method="post">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="text" class="form-control" placeholder="Username"/>
+                            <input type="text" class="form-control" name="email" placeholder="E-Mail"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="password" class="form-control" placeholder="Password"/>
+                            <input type="password" class="form-control" name="password" placeholder="Password"/>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group"> 
                         <div class="col-md-6">
-                            <a href="forgotpassword.html" class="btn btn-link btn-block">Forgot your password?</a>
-                            <br/><br/>
-                         
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-info btn-block"><a href="dashboard.html" class="btn btn-link btn-block">Log In</a></button>
-                        </div>
-                        <div class="col-md-12">
-                            <button class="btn btn-success btn-block"><a href="registration.html" class="btn btn-link btn-block">Registration</a></button>
-                        </div>
+                            <button class="btn btn-info btn-block" type="submit" name="login">Log In</button>
+                        </div> 
                     </div>
                     </form>
                 </div>
                 <div class="login-footer">
                     <div class="pull-left">
-                        &copy; 2016 Video Chat
+                        &copy; <?php echo date('Y'); ?> Video Chat
                     </div>
                     <div class="pull-right">
                     </div>

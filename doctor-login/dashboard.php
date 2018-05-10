@@ -1,3 +1,13 @@
+<?php session_start();
+ob_start();
+
+if(!isset($_SESSION['doctoruserid']))
+{
+    header("Location: index.php");
+}
+
+include "config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>        
@@ -23,7 +33,7 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo-txt" style="font-size:20px;">
-                        <a href="dashboard.html" style="font-size:20px;background: chocolate;">VIDEO CHAT APP</a>
+                        <a href="dashboard.php" style="font-size:20px;background: chocolate;">VIDEO CHAT APP</a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-profile">
@@ -35,22 +45,16 @@
                                 <img src="assets/images/users/no-image.jpg" alt="John Doe"/>
                             </div>
                             <div class="profile-data">
-                                <div class="profile-data-name">lenin</div>
+                                <div class="profile-data-name"><?php echo $_SESSION['doctorusername']; ?></div>
                             </div>
-                           <!-- <div class="profile-controls">
-                                <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
-                                <a href="pages-messages.html" class="profile-control-right"><span class="fa fa-envelope"></span></a>
-                            </div>  -->
                         </div>                                                                        
                     </li>
                     <li class="xn-title">Navigation</li>
                     <li class="active">
-                        <a href="dashboard.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
+                        <a href="dashboard.php"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
                     </li>  
-                     <li class="xn-openable"><a href="#"><span class="fa fa-search"></span>Users</a>
-                     		<ul>
-                            <li ><a href="doctors.html"><span class="fa fa-stethoscope"></span>Doctor</a></li>  
-                    		</ul>
+                     <li class="">
+					 <a href="appointments.php"><span class="fa fa-stethoscope"></span>Appointments</a>
                      </li>                  
                     
                     
@@ -72,10 +76,10 @@
                     <!-- END SEARCH -->                    
                     <!-- POWER OFF -->
                     <li class="xn-icon-button pull-right last">
-                        <a href="#"><span class="fa fa-power-off"></span></a>
+                        <a href="logout.php"><span class="fa fa-power-off"></span></a>
                         <ul class="xn-drop-left animated zoomIn">
                             
-                            <li><a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign Out</a></li>
+                            <li><a href="logout.php" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign Out</a></li>
                         </ul>                        
                     </li> 
                     
