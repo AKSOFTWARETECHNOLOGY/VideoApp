@@ -1,7 +1,7 @@
 <?php session_start();
 ob_start();
 
-if(isset($_SESSION['adminuserid']))
+if(isset($_SESSION['doctoruserid']))
 {
 	header("Location: dashboard.php");
 }

@@ -29,6 +29,7 @@ include "../config.php";
                 <form class="join j-join">
              
                     <div class="join__body">
+                        <!--
                         <div class="join__row">
                             <input type="text" class="join__input j-join__username" name="username" placeholder="Username" value="Doctor" autofocus required title="Field should contain alphanumeric characters only in a range 3 to 20. The first character must be a letter." pattern="^[a-zA-Z][\w]{2,19}$">
                         </div>
@@ -36,9 +37,12 @@ include "../config.php";
                         <div class="join__row">
                             <input type="text" class="join__input j-join__room" name="room" placeholder="Chat room name" value="<?php echo $_GET['room']; ?>"  required title="Field should contain alphanumeric characters only in a range 3 to 15, without space. The first character must be a letter." pattern="^[a-zA-Z][a-zA-Z0-9]{2,14}$">
                         </div>
+                        -->
 
                         <div class="join__row">
-                            <button type="submit" class="join__btn">Login</button>
+                            <input type="hidden" class="join__input j-join__username" name="username" value="Doctor" />
+                            <input type="hidden" class="join__input j-join__room" name="room" value="<?php echo $_GET['room']; ?>" />
+                            <button type="submit" class="join__btn">Start Chat</button>
                         </div>
                     </div>
                 </form>

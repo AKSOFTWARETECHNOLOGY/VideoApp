@@ -110,7 +110,7 @@ include "config.php";
                      <div class="row">                        
                         <div class="col-md-12">
 						 
-<iframe src="webrtc/index.php?room=<?php echo $_GET['room']; ?>" style="width:100%;height:600px;border: none;scroll-behavior: unset;"  ></iframe>
+<iframe src="webrtc/index.php?room=<?php echo $_GET['room']; ?>&<?php echo time(); ?>" style="width:100%;height:600px;border: none;scroll-behavior: unset;"  ></iframe>
 
                         </div>
                     </div>
