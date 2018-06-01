@@ -15,18 +15,23 @@ else
 */
 ?>
 <?php
-
+/*
+Host server: eprescription.crqgb3adznjb.ap-south-1.rds.amazonaws.com
+Username: ePrescription
+Database: eprescription_new
+Password: prescription17
+*/
 $hostname		=	"eprescription.crqgb3adznjb.ap-south-1.rds.amazonaws.com";
 $username		=	"ePrescription";
 $password	    =	"prescription17";
 $database		=	"eprescription_new";
 
-/* * /
+
 	$connection	=	mysql_connect($hostname,$username,$password) or die("not Server not connected");
 	$database	=	mysql_select_db($database) or die("Data base not connected");
-/* */
 
-/* */
+
+/*
 $conn = mysqli_connect($hostname, $username, $password, $database);
 if( mysqli_connect_error()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
 $GLOBALS['conn'] = $conn;
@@ -62,5 +67,5 @@ function mysql_real_escape_string($string) {
 	$conn = $GLOBALS['conn'];
 	return mysqli_real_escape_string($conn, $string);
 }
-/* */
+*/
 ?>

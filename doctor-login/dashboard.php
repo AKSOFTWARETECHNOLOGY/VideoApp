@@ -29,7 +29,7 @@ include "config.php";
         <div class="page-container">
             
             <!-- START PAGE SIDEBAR -->
-            <div class="page-sidebar">
+            <div class="page-sidebar" style="min-height: 750px;">
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo-txt" style="font-size:20px;">
@@ -50,12 +50,17 @@ include "config.php";
                         </div>                                                                        
                     </li>
                     <li class="xn-title">Navigation</li>
-                    <li class="active">
+                    <!--
+					<li class="active">
                         <a href="dashboard.php"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
                     </li>  
+					-->
                      <li class="">
-					 <a href="appointments.php"><span class="fa fa-stethoscope"></span>Appointments</a>
-                     </li>                  
+					 <a href="dashboard.php"><span class="fa fa-stethoscope"></span>Appointments</a>
+                     </li>    
+					<li class="">
+                        <a href="logout.php"><span class="fa fa-desktop"></span> <span class="xn-text">Logout</span></a>                        
+                    </li>                 
                     
                     
                 </ul>
@@ -79,9 +84,9 @@ include "config.php";
                         <a href="logout.php"><span class="fa fa-power-off"></span></a>
                         <ul class="xn-drop-left animated zoomIn">
                             
-                            <li><a href="logout.php" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign Out</a></li>
+                            <li><a href="logout.php" ><span class="fa fa-sign-out"></span> Sign Out</a></li>
                         </ul>                        
-                    </li> 
+                    </li>
                     
                     <!-- END LANG BAR -->
                 </ul>
@@ -97,6 +102,64 @@ include "config.php";
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
                     
+					
+                     <div class="row">                        
+                        <div class="col-md-12">
+						<?php
+						$doctor_id=$_SESSION['doctoruserid'];
+						$appointment_date=date('Y-m-d');
+						$patient_appointment_sql="SELECT * FROM `doctor_appointment` AS da
+						INNER JOIN `patient` AS pa ON da.patient_id=pa.patient_id 
+						WHERE da.`doctor_id`='$doctor_id' AND da.`appointment_date`='$appointment_date'";
+						$patient_appointment_exe=mysql_query($patient_appointment_sql);
+						$patient_appointment_cnt=mysql_num_rows($patient_appointment_exe);
+						?>
+        
+						<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Patient ID</th>
+                <th>Patient Name</th>
+                <th>Appointment Category</th>
+				<th>Appointment Date</th>
+                <th>Appointment Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+		
+		<?php
+		if($patient_appointment_cnt>0)
+		{
+			while($patient_appointment_fet=mysql_fetch_array($patient_appointment_exe)) 
+			{
+		?>
+			<tr>
+                <td><?php echo $patient_appointment_fet['pid']; ?></td>
+                <td><?php echo $patient_appointment_fet['name']; ?></td>
+				<td><?php echo $patient_appointment_fet['appointment_category']; ?></td>
+                <td><?php echo $patient_appointment_fet['appointment_date']; ?></td>
+                <td><?php echo $patient_appointment_fet['appointment_time']; ?></td>
+                <td><a href="onlinechat.php?room=<?php echo $patient_appointment_fet['pid']; ?>&<?php echo time(); ?>">ONLINE CHAT</a></td>
+            </tr>
+        <?php 
+			}
+		}
+		else
+		{
+			
+		}
+		?>
+		 </tbody>
+         
+    </table>
+		                     
+                            
+                        </div>
+                    </div>
+                    
+                     
+					<?php /* ?>
                     <!-- START WIDGETS -->  
                     <div class="row">
                         <div class="col-md-3">
@@ -257,7 +320,7 @@ include "config.php";
                     <!-- START DASHBOARD CHART -->
                                     
                     <!-- END DASHBOARD CHART -->
-                    
+                    <?php */ ?>
                 </div>
                 <!-- END PAGE CONTENT WRAPPER -->                                
             </div>            
@@ -335,6 +398,16 @@ include "config.php";
         
         <script type="text/javascript" src="js/demo_dashboard.js"></script>
         <!-- END TEMPLATE -->
+		
+		<link rel="stylesheet" type="text/css" id="theme" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+		
+		<script>
+		$(document).ready(function() {
+    $('#example').DataTable();
+} );
+		</script>
     <!-- END SCRIPTS -->         
     </body>
 </html>

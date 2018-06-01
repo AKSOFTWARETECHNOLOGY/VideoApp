@@ -18,6 +18,9 @@ include "../config.php";
     <link rel="stylesheet" href="https://cdn.rawgit.com/una/CSSgram/master/source/css/cssgram.css">
     <!-- app styles -->
     <link rel="stylesheet" href="styles.css">
+	<style>
+	.hidden { display:none;}
+	</style>
 </head>
 <body>
     <div class="wrapper j-wrapper">
@@ -40,9 +43,12 @@ include "../config.php";
                         -->
 
                         <div class="join__row">
-                            <input type="hidden" class="join__input j-join__username" name="username" value="Doctor" />
+							<button type="button" class="join__btn">LOADING CHAT</button>
+                            <input type="hidden" class="join__input j-join__username" name="username" value="<?php echo $_GET['name']; ?>" />
                             <input type="hidden" class="join__input j-join__room" name="room" value="<?php echo $_GET['room']; ?>" />
-                            <button type="submit" class="join__btn">Start Chat</button>
+                            <div style="display:none;">
+								<button type="submit" class="join__btn">Start Chat</button>
+							</div>	
                         </div>
                     </div>
                 </form>
@@ -138,9 +144,9 @@ include "../config.php";
     <!-- TEMPLATES -->
         <!-- stateBoard -->
         <script type="text/template" id="tpl_default">
-            QuickBlox room is <b><%= tag %></b>.
+            DRALLCAPS room is <b><%= tag %></b>.
             Logged in as <b><%= name %></b>
-            <button class='fw-link j-logout'>Logout</button>
+            <button class='fw-link j-logout'>END CHAT</button>
         </script>
 
         <script type="text/template" id="tpl_during_call">
@@ -265,13 +271,13 @@ include "../config.php";
                     <button class="caller__frames_acts_btn_record j-record" alt="record video">
                     </button>
 
-                    <p class="sample_info">
+                    <p class="sample_info hidden">
                         The recording time is 10 minutes maximum.
                         Check out a <a href="https://github.com/QuickBlox/javascript-media-recorder" target="_blank">recorder</a> if want more.
                     </p>
                 </div>
 
-                <div class="caller__frames_fl">
+                <div class="caller__frames_fl hidden">
                     <select class="qb-select j-filter">
                         <option value="no">No Filter</option>
                         <option value="_1977">1977</option>
@@ -284,7 +290,7 @@ include "../config.php";
                     </select>
                 </div>
 
-                <div class="caller__frames_bandwidth">
+                <div class="caller__frames_bandwidth hidden">
                     <select class="qb-select j-bandwidth">
                         <option value="">Standart</option>
                         <option value="2048">2048 kbps</option>
@@ -295,7 +301,7 @@ include "../config.php";
                     </select>
                 </div>
 
-                <div class="caller__frames_source">
+                <div class="caller__frames_source hidden">
                     <select class="qb-select j-source invisible">
                     </select>
                 </div>

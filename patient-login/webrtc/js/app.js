@@ -219,6 +219,14 @@
 
         app.router = new Router();
         Backbone.history.start();
+		
+		
+		/**
+         * AUTO JOIN
+         */
+        $(document).ready(function() {
+			 $('.j-join').submit();
+        });
 
         /**
          * JOIN
@@ -671,8 +679,11 @@
                 QB.chat.disconnect();
                 localStorage.removeItem('isAuth');
                 localStorage.removeItem('data');
+				/*
                 app.router.navigate('join', {'trigger': true});
                 app.helpers.setFooterPosition();
+				*/
+				parent.location = '../dashboard.php';
             });
         });
 

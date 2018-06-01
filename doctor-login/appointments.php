@@ -50,12 +50,17 @@ include "config.php";
                         </div>                                                                        
                     </li>
                     <li class="xn-title">Navigation</li>
-                    <li class="active">
+                    <!--
+					<li class="active">
                         <a href="dashboard.php"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
                     </li>  
+					-->
                      <li class="">
-					 <a href="appointments.php"><span class="fa fa-stethoscope"></span>Appointments</a>
-                     </li>                  
+					 <a href="dashboard.php"><span class="fa fa-stethoscope"></span>Appointments</a>
+                     </li>    
+					<li class="">
+                        <a href="logout.php"><span class="fa fa-desktop"></span> <span class="xn-text">Logout</span></a>
+                    </li>                  
                     
                     
                 </ul>
@@ -77,12 +82,12 @@ include "config.php";
                     <!-- END SEARCH -->                    
                     <!-- POWER OFF -->
                     <li class="xn-icon-button pull-right last">
-                        <a href="#"><span class="fa fa-power-off"></span></a>
+                        <a href="logout.php"><span class="fa fa-power-off"></span></a>
                         <ul class="xn-drop-left animated zoomIn">
                             
-                            <li><a href="logout.php" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign Out</a></li>
+                            <li><a href="logout.php" ><span class="fa fa-sign-out"></span> Sign Out</a></li>
                         </ul>                        
-                    </li> 
+                    </li>
                     
                     <!-- END LANG BAR -->
                 </ul>
@@ -144,7 +149,7 @@ include "config.php";
 				<td><?php echo $patient_appointment_fet['appointment_category']; ?></td>
                 <td><?php echo $patient_appointment_fet['appointment_date']; ?></td>
                 <td><?php echo $patient_appointment_fet['appointment_time']; ?></td>
-                <td><a href="onlinechat.php?room=<?php echo $patient_appointment_fet['pid']; ?>">ONLINE CHAT</a></td>
+                <td><a href="onlinechat.php?room=<?php echo $patient_appointment_fet['pid']; ?>&<?php echo time(); ?>">ONLINE CHAT</a></td>
             </tr>
         <?php 
 			}
@@ -155,16 +160,7 @@ include "config.php";
 		}
 		?>
 		 </tbody>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
+         
     </table>
 		                     
                             

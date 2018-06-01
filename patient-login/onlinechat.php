@@ -1,7 +1,7 @@
 <?php session_start();
 ob_start();
 
-if(!isset($_SESSION['doctoruserid']))
+if(!isset($_SESSION['patientuserid']))
 {
     header("Location: index.php");
 }
@@ -45,17 +45,22 @@ include "config.php";
                                 <img src="assets/images/users/no-image.jpg" alt="John Doe"/>
                             </div>
                             <div class="profile-data">
-                                <div class="profile-data-name"><?php echo $_SESSION['doctorusername']; ?></div>
+                                <div class="profile-data-name"><?php echo $_SESSION['patientusername']; ?></div>
                             </div>
                         </div>                                                                        
                     </li>
                     <li class="xn-title">Navigation</li>
-                    <li class="active">
+                    <!--
+					<li class="active">
                         <a href="dashboard.php"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
                     </li>  
+					-->
                      <li class="">
-					 <a href="appointments.php"><span class="fa fa-stethoscope"></span>Appointments</a>
-                     </li>                  
+					 <a href="dashboard.php"><span class="fa fa-stethoscope"></span>Appointments</a>
+                     </li>    
+					<li class="">
+                        <a href="logout.php"><span class="fa fa-desktop"></span> <span class="xn-text">Logout</span></a>                        
+                    </li>                  
                     
                     
                 </ul>
@@ -77,13 +82,12 @@ include "config.php";
                     <!-- END SEARCH -->                    
                     <!-- POWER OFF -->
                     <li class="xn-icon-button pull-right last">
-                        <a href="#"><span class="fa fa-power-off"></span></a>
+                        <a href="logout.php"><span class="fa fa-power-off"></span></a>
                         <ul class="xn-drop-left animated zoomIn">
                             
-                            <li><a href="logout.php" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign Out</a></li>
+                            <li><a href="logout.php"><span class="fa fa-sign-out"></span> Sign Out</a></li>
                         </ul>                        
                     </li> 
-                    
                     <!-- END LANG BAR -->
                 </ul>
                 <!-- END X-NAVIGATION VERTICAL -->                     
@@ -110,7 +114,7 @@ include "config.php";
                      <div class="row">                        
                         <div class="col-md-12">
 						 
-<iframe src="webrtc/index.php?room=<?php echo $_GET['room']; ?>&<?php echo time(); ?>" style="width:100%;height:600px;border: none;scroll-behavior: unset;"  ></iframe>
+<iframe src="webrtc/index.php?room=<?php echo $_GET['room']; ?>&name=<?php echo str_replace(' ','',trim($_SESSION['patientusername']));?>&<?php echo time(); ?>" style="width:100%;height:600px;border: none;scroll-behavior: unset;"  ></iframe>
 
                         </div>
                     </div>
